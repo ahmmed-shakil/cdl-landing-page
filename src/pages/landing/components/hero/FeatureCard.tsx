@@ -11,9 +11,9 @@ const FeatureCard: React.FC = () => {
       <div>
         <div>
           <p className=" font-semibold">
-            <span className=" text-2xl">3+</span> Years
+            <span className="text-lg md:text-2xl">3+</span> Years
           </p>
-          <p className=" text-blue-700">Field Experience</p>
+          <p className=" text-blue-700 text-sm md:text-lg">Field Experience</p>
         </div>
       </div>
     </div>
@@ -24,9 +24,9 @@ const FeatureCard: React.FC = () => {
       <div>
         <div>
           <p className=" font-semibold">
-            <span className=" text-2xl">10+</span> Projects
+            <span className=" text-lg md:text-2xl">10+</span> Projects
           </p>
-          <p className=" text-blue-700">Done Around World</p>
+          <p className=" text-blue-700 text-sm md:text-lg">Done Around World</p>
         </div>
       </div>
     </div>
@@ -37,9 +37,11 @@ const FeatureCard: React.FC = () => {
       <div>
         <div>
           <p className=" font-semibold">
-            <span className=" text-2xl">99%</span>
+            <span className=" text-lg md:text-2xl">99%</span>
           </p>
-          <p className=" text-blue-700">Client Satisfaction</p>
+          <p className=" text-blue-700 text-sm md:text-lg">
+            Client Satisfaction
+          </p>
         </div>
       </div>
     </div>
@@ -50,9 +52,9 @@ const FeatureCard: React.FC = () => {
       <div>
         <div>
           <p className=" font-semibold">
-            <span className=" text-2xl">2</span> Mins
+            <span className=" text-lg md:text-2xl">2</span> Mins
           </p>
-          <p className=" text-blue-700">Response Time</p>
+          <p className=" text-blue-700 text-sm md:text-lg">Response Time</p>
         </div>
       </div>
     </div>
