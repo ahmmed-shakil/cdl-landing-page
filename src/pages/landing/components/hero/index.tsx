@@ -8,13 +8,38 @@ const LandingHero: React.FC = () => {
     <div className=" bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center py-10 md:py-0">
       <div className=" max-w-7xl mx-auto px-5 w-full">
         <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-2">
+          <ScrollAnimation
+            animateIn="fadeInDown"
+            initiallyVisible
+            duration={2}
+            className=" block md:hidden"
+          >
+            <div className=" py-10 order-1">
+              <iframe
+                width="100%"
+                height="350px"
+                className="rounded-md"
+                src="https://www.youtube.com/embed/rsV8ZB-DnAM"
+                title="Harley-Davidson Breakout Sunset Ride | Pure Engine Sound"
+                // frameborder={0}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                // referrerpolicy="strict-origin-when-cross-origin"
+                // allowfullscreen
+              ></iframe>
+            </div>
+          </ScrollAnimation>
           <ScrollAnimation animateIn="fadeInDown" initiallyVisible duration={2}>
             <div>
               <LeftContent />
             </div>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInDown" initiallyVisible duration={2}>
-            <div className=" py-10">
+          <ScrollAnimation
+            animateIn="fadeInDown"
+            initiallyVisible
+            duration={2}
+            className=" hidden md:block"
+          >
+            <div className=" py-10 order-1">
               <iframe
                 width="100%"
                 height="350px"
@@ -31,7 +56,7 @@ const LandingHero: React.FC = () => {
         </div>
         {/* <div className=" bg-gradient-to-r from-blue-700 to-neutral-50 mt-10"> */}
         <ScrollAnimation animateIn="slideInUp" initiallyVisible duration={1}>
-          <div className="relative mt-0 md:mt-3 ">
+          <div className="relative mt-5 md:mt-3 ">
             {/* Badge */}
             {/* <div className="absolute left-1/2 -translate-x-1/2 -top-3 z-20 block md:hidden">
             <div className="relative">

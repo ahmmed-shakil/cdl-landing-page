@@ -65,7 +65,7 @@ const LandingPage: React.FC = () => {
       >
         <iframe
           src="https://calendly.com/anshgarg7/discovery-call?month=2025-02"
-          className="w-full h-[500px] border-none"
+          className="w-full h-[500px] border-none "
         ></iframe>
       </Modal>
 
@@ -82,7 +82,7 @@ const LandingPage: React.FC = () => {
         getContainer={false}
         className="rounded-lg"
       >
-        <div className="flex flex-col gap-4 p-6 text-center">
+        <div className="flex flex-col gap-4 mt-3 border-t border-slate-200 pt-4 text-center">
           <Input
             type="email"
             placeholder="Enter your email"

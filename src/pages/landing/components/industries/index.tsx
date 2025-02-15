@@ -42,7 +42,7 @@ const Industries: React.FC = () => {
               animateIn="zoomIn"
               className=" h-full"
               key={index}
-              duration={2}
+              duration={1}
             >
               <div
                 className={`p-6 rounded-xl shadow-md text-center text-sm md:text-lg font-medium ${field.bgColor}`}
