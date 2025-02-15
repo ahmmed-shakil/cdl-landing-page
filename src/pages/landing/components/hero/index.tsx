@@ -38,7 +38,7 @@ const LandingHero: React.FC = () => {
           </ScrollAnimation>
         </div>
         {/* <div className=" bg-gradient-to-r from-blue-700 to-neutral-50 mt-10"> */}
-        <ScrollAnimation animateIn="slideInUp" initiallyVisible duration={2}>
+        <ScrollAnimation animateIn="slideInUp" initiallyVisible duration={1}>
           <div className="relative mt-0 md:mt-3 ">
             {/* Badge */}
             {/* <div className="absolute left-1/2 -translate-x-1/2 -top-3 z-20 block md:hidden">
