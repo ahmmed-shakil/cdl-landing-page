@@ -5,6 +5,7 @@ import client2 from "../../../../assets/img/clients/ribango.png";
 import client3 from "../../../../assets/img/clients/trading.png";
 import client4 from "../../../../assets/img/clients/udak.png";
 import client5 from "../../../../assets/img/clients/usa_tax.png";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const Clients: React.FC = () => {
   const [slidesToShow, setSlidesToShow] = useState(5);
@@ -24,17 +25,19 @@ const Clients: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto py-16 space-y-6 px-6">
-      <Carousel autoplay dots={false} slidesToShow={slidesToShow} infinite>
-        {clients.map((img, i) => (
-          <div key={i} className="flex justify-end">
-            <img
-              src={img}
-              className="w-2/3 h-24 rounded-md"
-              alt={`client-${i}`}
-            />
-          </div>
-        ))}
-      </Carousel>
+      <ScrollAnimation animateIn="fadeInUp">
+        <Carousel autoplay dots={false} slidesToShow={slidesToShow} infinite>
+          {clients.map((img, i) => (
+            <div key={i} className="flex justify-end">
+              <img
+                src={img}
+                className="w-2/3 h-24 rounded-md"
+                alt={`client-${i}`}
+              />
+            </div>
+          ))}
+        </Carousel>
+      </ScrollAnimation>
     </div>
   );
 };

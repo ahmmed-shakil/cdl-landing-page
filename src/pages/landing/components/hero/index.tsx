@@ -1,34 +1,47 @@
 import React from "react";
 import LeftContent from "./LeftContent";
 import FeatureCard from "./FeatureCard";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const LandingHero: React.FC = () => {
   return (
     <div className=" bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center py-10 md:py-0">
       <div className=" max-w-7xl mx-auto px-5 w-full">
         <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-2">
-          <div>
-            <LeftContent />
-          </div>
-          <div className=" py-10">
-            <iframe
-              width="100%"
-              height="350px"
-              className="rounded-md"
-              src="https://www.youtube.com/embed/rsV8ZB-DnAM"
-              title="Harley-Davidson Breakout Sunset Ride | Pure Engine Sound"
-              // frameborder={0}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              // referrerpolicy="strict-origin-when-cross-origin"
-              // allowfullscreen
-            ></iframe>
-          </div>
+          <ScrollAnimation
+            animateIn="slideInLeft"
+            initiallyVisible
+            duration={2}
+          >
+            <div>
+              <LeftContent />
+            </div>
+          </ScrollAnimation>
+          <ScrollAnimation
+            animateIn="slideInRight"
+            initiallyVisible
+            duration={2}
+          >
+            <div className=" py-10">
+              <iframe
+                width="100%"
+                height="350px"
+                className="rounded-md"
+                src="https://www.youtube.com/embed/rsV8ZB-DnAM"
+                title="Harley-Davidson Breakout Sunset Ride | Pure Engine Sound"
+                // frameborder={0}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                // referrerpolicy="strict-origin-when-cross-origin"
+                // allowfullscreen
+              ></iframe>
+            </div>
+          </ScrollAnimation>
         </div>
         {/* <div className=" bg-gradient-to-r from-blue-700 to-neutral-50 mt-10"> */}
-
-        <div className="relative mt-0 md:mt-10 ">
-          {/* Badge */}
-          {/* <div className="absolute left-1/2 -translate-x-1/2 -top-3 z-20 block md:hidden">
+        <ScrollAnimation animateIn="slideInUp" initiallyVisible duration={2}>
+          <div className="relative mt-0 md:mt-3 ">
+            {/* Badge */}
+            {/* <div className="absolute left-1/2 -translate-x-1/2 -top-3 z-20 block md:hidden">
             <div className="relative">
               <div className="absolute -left-4 top-2 h-10 w-4 bg-blue-700 skew-y-[135deg] origin-top z-0"></div>
 
@@ -41,11 +54,12 @@ const LandingHero: React.FC = () => {
               </div>
             </div>
           </div> */}
-          {/* Content */}
-          <div className="rounded-md p-10 bg-slate-50 shadow-md relative z-10">
-            <FeatureCard />
+            {/* Content */}
+            <div className="rounded-md p-10 bg-slate-50 shadow-md relative z-10">
+              <FeatureCard />
+            </div>
           </div>
-        </div>
+        </ScrollAnimation>
       </div>
     </div>
   );

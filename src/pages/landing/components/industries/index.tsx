@@ -1,6 +1,6 @@
 import React from "react";
 import SubHeading from "../../../../components/ui/sub-heading";
-
+import ScrollAnimation from "react-animate-on-scroll";
 const Industries: React.FC = () => {
   const fields = [
     {
@@ -28,18 +28,28 @@ const Industries: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-neutral-50">
       <div className="max-w-7xl mx-auto space-y-6 py-16 px-6">
-        <SubHeading content="FOCUSING EXCELLENCE" />
-        <div>
-          <h3 className="text-xl md:text-4xl font-semibold">Our Fields</h3>
-        </div>
+        <ScrollAnimation animateIn="slideInRight" duration={1}>
+          <SubHeading content="FOCUSING EXCELLENCE" />
+        </ScrollAnimation>
+        <ScrollAnimation animateIn="slideInLeft" duration={1}>
+          <div>
+            <h3 className="text-xl md:text-4xl font-semibold">Our Fields</h3>
+          </div>
+        </ScrollAnimation>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 items-center gap-4">
           {fields.map((field, index) => (
-            <div
+            <ScrollAnimation
+              animateIn="zoomIn"
+              className=" h-full"
               key={index}
-              className={`p-6 rounded-xl shadow-md text-center text-sm md:text-lg font-medium ${field.bgColor}`}
+              duration={2}
             >
-              {field.title}
-            </div>
+              <div
+                className={`p-6 rounded-xl shadow-md text-center text-sm md:text-lg font-medium ${field.bgColor}`}
+              >
+                {field.title}
+              </div>
+            </ScrollAnimation>
           ))}
         </div>
       </div>

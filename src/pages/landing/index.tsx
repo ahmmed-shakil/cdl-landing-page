@@ -33,9 +33,11 @@ const LandingPage: React.FC = () => {
       </div>
 
       {/* Sticky Footer */}
+
       <footer className="fixed bottom-0 left-0 w-full bg-gray-100 text-white p-4 shadow-lg py-2">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo */}
+
           <div className="flex items-center space-x-2">
             <img src={logo} alt="Logo" className="h-16 w-auto" />
           </div>
@@ -53,7 +55,9 @@ const LandingPage: React.FC = () => {
 
       {/* Book a Demo Modal */}
       <Modal
-        title="Book a Demo"
+        title={
+          <span className="text-lg font-bold text-indigo-600">Book A Demo</span>
+        }
         open={isDemoModalOpen}
         onCancel={() => setIsDemoModalOpen(false)}
         footer={null}

@@ -5,6 +5,7 @@ import soft from "../../../../assets/img/services/software.svg";
 import cloud from "../../../../assets/img/services/cloud.png";
 import digital from "../../../../assets/img/services/digital_marketing.svg";
 import it from "../../../../assets/img/services/it.svg";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const Services: React.FC = () => {
   const services = [
@@ -36,28 +37,36 @@ const Services: React.FC = () => {
   ];
   return (
     <div className=" space-y-6 max-w-7xl mx-auto px-5 w-full py-16">
-      <SubHeading content="WHAT WE’RE OFFERING" />
-      <div>
-        <h3 className=" text-xl md:text-4xl font-semibold">
-          Dealing in all professional IT services.
-        </h3>
-      </div>
+      <ScrollAnimation animateIn="slideInRight" duration={2}>
+        <SubHeading content="WHAT WE’RE OFFERING" />
+      </ScrollAnimation>
+      <ScrollAnimation animateIn="slideInLeft" duration={2}>
+        <div>
+          <h3 className=" text-xl md:text-4xl font-semibold">
+            Dealing in all professional IT services.
+          </h3>
+        </div>
+      </ScrollAnimation>
       <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 items-center gap-4">
         {services?.map((s, i) => (
-          <div
+          <ScrollAnimation
+            animateIn="zoomIn"
+            className=" h-full"
             key={i}
-            className=" bg-white p-4 rounded-md shadow border border-slate-100 flex flex-col items-start mt-5 h-full hover:bg-gray-200 transition-all duration-150 ease-in-out shadow-md"
+            duration={1}
           >
-            <div className=" w-14 h-14 mb-3 pt-3">
-              <img src={s?.icon} />
+            <div className=" bg-white p-4 rounded-md  border border-slate-100 flex flex-col items-start mt-5 h-full hover:bg-gray-200 transition-all duration-150 ease-in-out shadow-md">
+              <div className=" w-14 h-14 mb-3 pt-3">
+                <img src={s?.icon} />
+              </div>
+              <div>
+                <h5 className=" py-2 text-md md:text-lg font-semibold">
+                  {s?.title}
+                </h5>
+                <p>{s?.desc}</p>
+              </div>
             </div>
-            <div>
-              <h5 className=" py-2 text-md md:text-lg font-semibold">
-                {s?.title}
-              </h5>
-              <p>{s?.desc}</p>
-            </div>
-          </div>
+          </ScrollAnimation>
         ))}
       </div>
     </div>
