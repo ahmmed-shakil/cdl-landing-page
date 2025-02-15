@@ -8,20 +8,12 @@ const LandingHero: React.FC = () => {
     <div className=" bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center py-10 md:py-0">
       <div className=" max-w-7xl mx-auto px-5 w-full">
         <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-2">
-          <ScrollAnimation
-            animateIn="slideInLeft"
-            initiallyVisible
-            duration={2}
-          >
+          <ScrollAnimation animateIn="fadeInDown" initiallyVisible duration={2}>
             <div>
               <LeftContent />
             </div>
           </ScrollAnimation>
-          <ScrollAnimation
-            animateIn="slideInRight"
-            initiallyVisible
-            duration={2}
-          >
+          <ScrollAnimation animateIn="fadeInDown" initiallyVisible duration={2}>
             <div className=" py-10">
               <iframe
                 width="100%"

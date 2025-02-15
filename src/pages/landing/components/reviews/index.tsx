@@ -39,10 +39,10 @@ const Review: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-neutral-50">
       <div className="max-w-7xl mx-auto py-16 space-y-6 px-6">
-        <ScrollAnimation animateIn="slideInRight" duration={2}>
+        <ScrollAnimation animateIn="fadeInDown" duration={2}>
           <SubHeading content="TESTIMONIALS" />
         </ScrollAnimation>
-        <ScrollAnimation animateIn="slideInLeft" duration={2}>
+        <ScrollAnimation animateIn="fadeInDown" duration={2}>
           <div>
             <h3 className="text-xl md:text-4xl font-semibold">
               What Clients Say About Us.
@@ -63,7 +63,7 @@ const Review: React.FC = () => {
               },
             }}
           >
-            <Carousel autoplay arrows>
+            <Carousel autoplay={false} arrows>
               {people.map(({ id, name, job, image, text, heading }) => (
                 <Card
                   key={id}

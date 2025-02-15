@@ -28,10 +28,10 @@ const Industries: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-neutral-50">
       <div className="max-w-7xl mx-auto space-y-6 py-16 px-6">
-        <ScrollAnimation animateIn="slideInRight" duration={1}>
+        <ScrollAnimation animateIn="fadeInDown" duration={1}>
           <SubHeading content="FOCUSING EXCELLENCE" />
         </ScrollAnimation>
-        <ScrollAnimation animateIn="slideInLeft" duration={1}>
+        <ScrollAnimation animateIn="fadeInDown" duration={1}>
           <div>
             <h3 className="text-xl md:text-4xl font-semibold">Our Fields</h3>
           </div>

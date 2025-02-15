@@ -37,10 +37,10 @@ const Services: React.FC = () => {
   ];
   return (
     <div className=" space-y-6 max-w-7xl mx-auto px-5 w-full py-16">
-      <ScrollAnimation animateIn="slideInRight" duration={2}>
+      <ScrollAnimation animateIn="fadeInDown" duration={2}>
         <SubHeading content="WHAT WE’RE OFFERING" />
       </ScrollAnimation>
-      <ScrollAnimation animateIn="slideInLeft" duration={2}>
+      <ScrollAnimation animateIn="fadeInDown" duration={2}>
         <div>
           <h3 className=" text-xl md:text-4xl font-semibold">
             Dealing in all professional IT services.

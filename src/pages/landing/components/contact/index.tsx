@@ -17,7 +17,7 @@ const ContactUs = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 pt-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Left: Contact Form */}
-      <ScrollAnimation animateIn="slideInLeft" duration={1}>
+      <ScrollAnimation animateIn="slideInUp">
         <div className="bg-gray-50 shadow-md rounded-lg p-8 space-y-3">
           <SubHeading content="CONTACT" />
           <div>
@@ -94,7 +94,7 @@ const ContactUs = () => {
           </div>
         </div>
       </ScrollAnimation>
-      <ScrollAnimation animateIn="slideInRight" duration={1}>
+      <ScrollAnimation animateIn="slideInUp" duration={2}>
         {/* Right: Contact Info */}
         <div className="bg-gray-50 shadow-md rounded-lg p-8 ">
           <FcCustomerSupport size={50} />
