@@ -17,7 +17,7 @@ const ContactUs = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 pt-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Left: Contact Form */}
-      <ScrollAnimation animateIn="slideInUp">
+      <ScrollAnimation animateIn="slideInUp" animateOnce>
         <div className="bg-gray-50 shadow-md rounded-lg p-8 space-y-3">
           <SubHeading content="CONTACT" />
           <div>
@@ -68,7 +68,7 @@ const ContactUs = () => {
       </ScrollAnimation>
 
       {/* Middle: Stats Section */}
-      <ScrollAnimation animateIn="slideInUp" duration={1}>
+      <ScrollAnimation animateIn="slideInUp" duration={1} animateOnce>
         <div className="bg-gray-50 shadow-md rounded-lg p-8 md:pb-14">
           <div className="space-y-6">
             <div className="border-b border-gray-200 py-8">
@@ -94,7 +94,7 @@ const ContactUs = () => {
           </div>
         </div>
       </ScrollAnimation>
-      <ScrollAnimation animateIn="slideInUp" duration={2}>
+      <ScrollAnimation animateIn="slideInUp" duration={2} animateOnce>
         {/* Right: Contact Info */}
         <div className="bg-gray-50 shadow-md rounded-lg p-8 ">
           <FcCustomerSupport size={50} />

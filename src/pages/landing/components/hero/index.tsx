@@ -13,6 +13,7 @@ const LandingHero: React.FC = () => {
             initiallyVisible
             duration={2}
             className=" block md:hidden"
+            animateOnce
           >
             <div className=" py-10 order-1">
               <iframe
@@ -28,12 +29,18 @@ const LandingHero: React.FC = () => {
               ></iframe>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeInDown" initiallyVisible duration={2}>
+          <ScrollAnimation
+            animateOnce
+            animateIn="fadeInDown"
+            initiallyVisible
+            duration={2}
+          >
             <div>
               <LeftContent />
             </div>
           </ScrollAnimation>
           <ScrollAnimation
+            animateOnce
             animateIn="fadeInDown"
             initiallyVisible
             duration={2}
@@ -55,7 +62,12 @@ const LandingHero: React.FC = () => {
           </ScrollAnimation>
         </div>
         {/* <div className=" bg-gradient-to-r from-blue-700 to-neutral-50 mt-10"> */}
-        <ScrollAnimation animateIn="slideInUp" initiallyVisible duration={1}>
+        <ScrollAnimation
+          animateIn="slideInUp"
+          initiallyVisible
+          duration={1}
+          animateOnce
+        >
           <div className="relative mt-5 md:mt-3 ">
             {/* Badge */}
             {/* <div className="absolute left-1/2 -translate-x-1/2 -top-3 z-20 block md:hidden">

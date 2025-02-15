@@ -39,17 +39,17 @@ const Review: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-neutral-50">
       <div className="max-w-7xl mx-auto py-16 space-y-6 px-6">
-        <ScrollAnimation animateIn="fadeInDown" duration={2}>
+        <ScrollAnimation animateIn="fadeInDown" duration={2} animateOnce>
           <SubHeading content="TESTIMONIALS" />
         </ScrollAnimation>
-        <ScrollAnimation animateIn="fadeInDown" duration={2}>
+        <ScrollAnimation animateIn="fadeInDown" duration={2} animateOnce>
           <div>
             <h3 className="text-xl md:text-4xl font-semibold">
               What Clients Say About Us.
             </h3>
           </div>
         </ScrollAnimation>
-        <ScrollAnimation animateIn="zoomIn">
+        <ScrollAnimation animateIn="zoomIn" animateOnce>
           <ConfigProvider
             theme={{
               components: {

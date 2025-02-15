@@ -37,10 +37,10 @@ const Services: React.FC = () => {
   ];
   return (
     <div className=" space-y-6 max-w-7xl mx-auto px-5 w-full py-16">
-      <ScrollAnimation animateIn="fadeInDown" duration={2}>
+      <ScrollAnimation animateIn="fadeInDown" duration={2} animateOnce>
         <SubHeading content="WHAT WE’RE OFFERING" />
       </ScrollAnimation>
-      <ScrollAnimation animateIn="fadeInDown" duration={2}>
+      <ScrollAnimation animateIn="fadeInDown" duration={2} animateOnce>
         <div>
           <h3 className=" text-xl md:text-4xl font-semibold">
             Dealing in all professional IT services.
@@ -53,6 +53,7 @@ const Services: React.FC = () => {
             animateIn="zoomIn"
             className=" h-full"
             key={i}
+            animateOnce
             duration={1}
           >
             <div className=" bg-white p-4 rounded-md  border border-slate-100 flex flex-col items-start mt-5 h-full hover:bg-gray-200 transition-all duration-150 ease-in-out shadow-md">
