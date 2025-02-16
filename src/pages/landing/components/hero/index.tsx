@@ -5,7 +5,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 const LandingHero: React.FC = () => {
   return (
-    <div className=" bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center">
+    <div className=" bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center  md:py-0 md:pb-20">
       <div className=" max-w-7xl mx-auto px-5 w-full">
         <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-2">
           <ScrollAnimation
