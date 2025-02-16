@@ -80,13 +80,13 @@ const Review: React.FC = () => {
                       </p>
                     </div>
                     {/* Header with image and quote icon */}
-                    <div className="flex items-center justify-between mt-6">
+                    <div className="flex items-center justify-between mt-6 absolute bottom-10">
                       <div className="flex items-center space-x-4">
                         <div className="relative">
                           <img
                             src={image}
                             alt={name}
-                            className="w-20 h-20 rounded-full object-cover border-2 border-blue-500"
+                            className="w-16 md:w-20 h-16 md:h-20 rounded-full object-cover border-2 border-blue-500"
                           />
                           <div className="absolute -bottom-1 -right-1 bg-blue-500 rounded-full p-2">
                             <svg

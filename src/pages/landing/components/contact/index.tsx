@@ -105,9 +105,9 @@ const ContactUs = () => {
             <p className="flex items-center text-gray-600">
               <PhoneOutlined className="mr-2 text-blue-600" /> +91 9889298078
             </p>
-            <p className="flex items-center text-gray-600">
+            {/* <p className="flex items-center text-gray-600">
               <PhoneOutlined className="mr-2 text-blue-600" /> +91 7799388158
-            </p>
+            </p> */}
             <p className="flex items-center text-gray-600">
               <MailOutlined className="mr-2 text-blue-600" />{" "}
               info@codedrivenlabs.com

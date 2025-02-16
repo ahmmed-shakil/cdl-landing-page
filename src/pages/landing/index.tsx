@@ -39,7 +39,7 @@ const LandingPage: React.FC = () => {
           {/* Logo */}
 
           <div className="flex items-center space-x-2">
-            <img src={logo} alt="Logo" className="h-16 w-auto" />
+            <img src={logo} alt="Logo" className="h-12 md:h-16 w-auto" />
           </div>
 
           {/* Book a Demo Button */}

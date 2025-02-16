@@ -26,12 +26,18 @@ const Clients: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto py-16 space-y-6 px-6">
       <ScrollAnimation animateIn="fadeInUp" animateOnce>
-        <Carousel autoplay dots={false} slidesToShow={slidesToShow} infinite>
+        <Carousel
+          autoplay
+          dots={false}
+          slidesToShow={slidesToShow}
+          infinite
+          centerMode
+        >
           {clients.map((img, i) => (
             <div key={i} className="flex justify-end">
               <img
                 src={img}
-                className="w-2/3 h-24 rounded-md"
+                className="w-2/3 md:w-2/3 h-16 md:h-24 rounded-md"
                 alt={`client-${i}`}
               />
             </div>
