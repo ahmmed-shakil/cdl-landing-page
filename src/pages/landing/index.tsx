@@ -65,6 +65,7 @@ const LandingPage: React.FC = () => {
       >
         <iframe
           src="https://calendly.com/anshgarg7/discovery-call?month=2025-02"
+          // src="https://calendly.com/anshgarg7/discovery-call?date=2025-02-01"
           className="w-full h-[500px] border-none "
         ></iframe>
       </Modal>

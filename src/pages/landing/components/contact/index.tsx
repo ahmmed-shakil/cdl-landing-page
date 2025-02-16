@@ -130,7 +130,10 @@ const ContactUs = () => {
           </p>
 
           {/* Social Icons */}
-          <div className="mt-6 flex space-x-4 text-blue-600 text-xl">
+          <p className="mt-6 text-gray-600 mb-3 flex items-start gap-4">
+            <span>Social Media</span>
+          </p>
+          <div className=" flex space-x-4 text-blue-600 text-2xl">
             <a
               href="https://www.instagram.com/codedrivenlabs"
               target="_blank"
