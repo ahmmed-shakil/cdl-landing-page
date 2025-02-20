@@ -1,4 +1,4 @@
-import { Card, Carousel, ConfigProvider } from "antd";
+import { Carousel, ConfigProvider } from "antd";
 import React from "react";
 import SubHeading from "../../../../components/ui/sub-heading";
 import user1 from "../../../../assets/img/reviews/udak.png";
@@ -9,14 +9,6 @@ import ScrollAnimation from "react-animate-on-scroll";
 const people = [
   {
     id: 1,
-    name: "Akhil Bansal",
-    job: "US Tax Gurus",
-    image: user3,
-    text: "It's professional, user-friendly, and perfectly represents my services. I'm impressed with their work and highly recommend them for any web development project. Thanks for boosting my online presence!",
-    heading: "Code Driven Labs created an outstanding CPA website for me",
-  },
-  {
-    id: 2,
     name: "Sanjeev Sharma ",
     job: "Udak",
     image: user1,
@@ -32,6 +24,14 @@ const people = [
     text: "Their support is top-notch. I wholeheartedly recommend them to anyone in the travel industry. Thank you for making my business better!",
     heading:
       "CDL has truly transformed my travel business with their outstanding travel booking software. The customized solution is user-friendly, efficient, and highly reliable.",
+  },
+  {
+    id: 2,
+    name: "Akhil Bansal",
+    job: "US Tax Gurus",
+    image: user3,
+    text: "It's professional, user-friendly, and perfectly represents my services. I'm impressed with their work and highly recommend them for any web development project. Thanks for boosting my online presence!",
+    heading: "Code Driven Labs created an outstanding CPA website for me",
   },
 ];
 
@@ -65,9 +65,10 @@ const Review: React.FC = () => {
           >
             <Carousel autoplay={false} arrows>
               {people.map(({ id, name, job, image, text, heading }) => (
-                <Card
+                <div
                   key={id}
-                  className="relative bg-white overflow-hidden h-[500px] md:h-[400px] flex flex-col"
+                  // className="relative bg-white overflow-hidden h-[460px] md:h-[400px] flex flex-col"
+                  className="relative overflow-hidden h-[460px] md:h-[400px] flex flex-col px-5 md:border rounded-md border-slate-200"
                 >
                   <div className="p-6 md:px-20 flex flex-col justify-between h-full">
                     {/* Content */}
@@ -106,9 +107,9 @@ const Review: React.FC = () => {
                     </div>
                   </div>
                   {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 -mt-6 -mr-6 w-24 h-24 bg-blue-500/10 rounded-full" />
-                  <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-24 h-24 bg-blue-500/10 rounded-full" />
-                </Card>
+                  {/* <div className="absolute top-0 right-0 -mt-6 -mr-6 w-24 h-24 bg-blue-500/10 rounded-full" /> */}
+                  {/* <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-24 h-24 bg-blue-500/10 rounded-full" /> */}
+                </div>
               ))}
             </Carousel>
           </ConfigProvider>

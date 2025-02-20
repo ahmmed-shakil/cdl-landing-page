@@ -1,13 +1,13 @@
 import React from "react";
-import experienceIcon from "../../../../assets/img/icons/experience.png";
-import projectceIcon from "../../../../assets/img/icons/project.png";
-import clientIcon from "../../../../assets/img/icons/check.png";
-import responseIcon from "../../../../assets/img/icons/response.png";
+import experienceIcon from "../../../../assets/img/icons/field_exp.png";
+import projectceIcon from "../../../../assets/img/icons/projects_done.png";
+import clientIcon from "../../../../assets/img/icons/customer_staisfaction.png";
+import responseIcon from "../../../../assets/img/icons/response_time.png";
 
 const FeatureCard: React.FC = () => {
   const experienceCard = (
     <div className=" flex gap-5 items-center">
-      <img className="w-10 md:w-16 h-10 md:h-16" src={experienceIcon} />
+      <img className="w-10 md:w-12 h-10 md:h-12" src={experienceIcon} />
       <div>
         <div>
           <p className=" font-semibold">
@@ -20,7 +20,7 @@ const FeatureCard: React.FC = () => {
   );
   const projectsCard = (
     <div className=" flex items-center gap-5">
-      <img className="w-10 md:w-16 h-10 md:h-16" src={projectceIcon} />
+      <img className="w-10 md:w-12 h-10 md:h-12" src={projectceIcon} />
       <div>
         <div>
           <p className=" font-semibold">
@@ -33,7 +33,7 @@ const FeatureCard: React.FC = () => {
   );
   const satifactionCard = (
     <div className=" flex gap-5 items-center">
-      <img className="w-10 md:w-16 h-10 md:h-16" src={clientIcon} />
+      <img className="w-10 md:w-12 h-10 md:h-12" src={clientIcon} />
       <div>
         <div>
           <p className=" font-semibold">
@@ -48,7 +48,7 @@ const FeatureCard: React.FC = () => {
   );
   const responseCard = (
     <div className=" flex gap-5 items-center">
-      <img className="w-10 md:w-16 h-10 md:h-16" src={responseIcon} />
+      <img className="w-10 md:w-12 h-10 md:h-12" src={responseIcon} />
       <div>
         <div>
           <p className=" font-semibold">
@@ -60,7 +60,7 @@ const FeatureCard: React.FC = () => {
     </div>
   );
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+    <div className=" grid grid-cols-1 md:grid-cols-4 items-center gap-4 md:divide-x divide-slate-500">
       <div>{experienceCard}</div>
       <div>{projectsCard}</div>
       <div>{satifactionCard}</div>

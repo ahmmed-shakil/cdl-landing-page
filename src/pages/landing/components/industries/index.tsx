@@ -46,10 +46,15 @@ const Industries: React.FC = () => {
               duration={1}
             >
               <div
-                className={`p-6 rounded-xl shadow-md text-center text-sm md:text-lg font-medium ${field.bgColor}`}
+                className={`p-6 rounded-xl border border-slate-300 bg-white text-center text-sm md:text-lg font-medium`}
               >
                 {field.title}
               </div>
+              {/* <div
+                className={`p-6 rounded-xl shadow-md text-center text-sm md:text-lg font-medium ${field.bgColor}`}
+              >
+                {field.title}
+              </div> */}
             </ScrollAnimation>
           ))}
         </div>

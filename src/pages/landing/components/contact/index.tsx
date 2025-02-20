@@ -8,8 +8,8 @@ import {
   LinkedinFilled,
 } from "@ant-design/icons";
 import SubHeading from "../../../../components/ui/sub-heading";
-import { FcCustomerSupport } from "react-icons/fc";
-import { FaMapLocation } from "react-icons/fa6";
+// import { FcCustomerSupport } from "react-icons/fc";
+// import { FaMapLocation } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import ScrollAnimation from "react-animate-on-scroll";
 
@@ -17,7 +17,11 @@ const ContactUs = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 pt-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Left: Contact Form */}
-      <ScrollAnimation animateIn="slideInUp" animateOnce>
+      <ScrollAnimation
+        className=" col-span-2"
+        animateIn="slideInUp"
+        animateOnce
+      >
         <div className="bg-gray-50 shadow-md rounded-lg p-8 space-y-3">
           <SubHeading content="CONTACT" />
           <div>
@@ -68,7 +72,7 @@ const ContactUs = () => {
       </ScrollAnimation>
 
       {/* Middle: Stats Section */}
-      <ScrollAnimation animateIn="slideInUp" duration={1} animateOnce>
+      {/* <ScrollAnimation animateIn="slideInUp" duration={1} animateOnce>
         <div className="bg-gray-50 shadow-md rounded-lg p-8 md:pb-14">
           <div className="space-y-6">
             <div className="border-b border-gray-200 py-8">
@@ -93,12 +97,17 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-      </ScrollAnimation>
-      <ScrollAnimation animateIn="slideInUp" duration={2} animateOnce>
+      </ScrollAnimation> */}
+      <ScrollAnimation
+        animateIn="slideInUp"
+        className=" h-full"
+        duration={2}
+        animateOnce
+      >
         {/* Right: Contact Info */}
         <div className="bg-gray-50 shadow-md rounded-lg p-8 ">
-          <FcCustomerSupport size={50} />
-          <h4 className="text-lg mt-6 md:text-xl font-semibold">
+          {/* <FcCustomerSupport size={50} /> */}
+          <h4 className="text-lg mt-4 md:text-xl font-semibold">
             Contact Info
           </h4>
           <div className="mt-4 space-y-4 border-b border-slate-200 pb-6">
@@ -114,7 +123,7 @@ const ContactUs = () => {
             </p>
           </div>
 
-          <FaMapLocation size={50} className=" text-blue-700 mt-5" />
+          {/* <FaMapLocation size={50} className=" text-blue-700 mt-5" /> */}
           <h4 className="mt-6 text-lg font-semibold">Visit Our Office</h4>
           <p className="text-gray-600 mt-2 flex items-start gap-4">
             <EnvironmentOutlined className="mt-1 text-blue-600" />
@@ -133,36 +142,46 @@ const ContactUs = () => {
           <p className="mt-6 text-gray-600 mb-3 flex items-start gap-4">
             <span>Social Media</span>
           </p>
-          <div className=" flex space-x-4 text-blue-600 text-2xl">
+          <div className="flex flex-col space-y-3 text-blue-600 text-2xl">
             <a
               href="https://www.instagram.com/codedrivenlabs"
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center space-x-2"
             >
               <InstagramFilled className="cursor-pointer" />
+              <span className="text-sm text-black ml-2">Instagram</span>
             </a>
             <a
               href="https://www.facebook.com/codedrivenlabs"
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center space-x-2"
             >
               <FacebookFilled className="cursor-pointer" />
+              <span className="text-sm text-black ml-2">Facebook</span>
             </a>
             <a
               href="https://www.linkedin.com/company/codedrivenlabs?originalSubdomain=in"
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center space-x-2"
             >
               <LinkedinFilled className="cursor-pointer" />
+              <span className="text-sm text-black ml-2">LinkedIn</span>
             </a>
             <a
               href="https://x.com/CodeDrivenLabs"
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center space-x-2"
             >
               <BsTwitterX className="cursor-pointer mt-1" />
+              <span className="text-sm text-black ml-2">X.com</span>
             </a>
           </div>
+
+          {/* <div style={{ height: "92px" }}></div> */}
         </div>
       </ScrollAnimation>
     </div>

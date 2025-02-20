@@ -1,10 +1,11 @@
 import React from "react";
 import SubHeading from "../../../../components/ui/sub-heading";
-import web from "../../../../assets/img/services/web_dev.svg";
-import soft from "../../../../assets/img/services/software.svg";
-import cloud from "../../../../assets/img/services/cloud.png";
-import digital from "../../../../assets/img/services/digital_marketing.svg";
-import it from "../../../../assets/img/services/it.svg";
+import web from "../../../../assets/img/icons/web_dev.png";
+import soft from "../../../../assets/img/icons/software_sol.png";
+import cloud from "../../../../assets/img/icons/cloud.png";
+import digital from "../../../../assets/img/icons/digital_marketing.png";
+import it from "../../../../assets/img/icons/it_consult.png";
+import branding from "../../../../assets/img/icons/branding.png";
 import ScrollAnimation from "react-animate-on-scroll";
 
 const Services: React.FC = () => {
@@ -34,6 +35,11 @@ const Services: React.FC = () => {
       desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
       icon: it,
     },
+    {
+      title: "Branding",
+      desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
+      icon: branding,
+    },
   ];
   return (
     <div className=" space-y-6 max-w-7xl mx-auto px-5 w-full py-16">
@@ -47,16 +53,26 @@ const Services: React.FC = () => {
           </h3>
         </div>
       </ScrollAnimation>
-      <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 items-center gap-4">
+      <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-4">
         {services?.map((s, i) => (
           <ScrollAnimation
             animateIn="zoomIn"
-            className=" h-full"
+            // className=" h-full"
             key={i}
             animateOnce
             duration={1}
           >
-            <div className=" bg-white p-4 rounded-md  border border-slate-100 flex flex-col items-start mt-5 h-full hover:bg-gray-200 transition-all duration-150 ease-in-out shadow-md">
+            <div className="p-2 md:pt-4 rounded-md  flex flex-col items-center mt-5 h-full hover:bg-gray-200 transition-all duration-150 ease-in-out ">
+              <div className=" w-14 h-14">
+                <img src={s?.icon} />
+              </div>
+              <div>
+                <h5 className=" pt-2 pb-0 mb-0 text-md md:text-lg font-semibold">
+                  {s?.title}
+                </h5>
+              </div>
+            </div>
+            {/* <div className=" bg-white p-4 rounded-md  border border-slate-100 flex flex-col items-start mt-5 h-full hover:bg-gray-200 transition-all duration-150 ease-in-out shadow-md">
               <div className=" w-14 h-14 mb-3 pt-3">
                 <img src={s?.icon} />
               </div>
@@ -66,7 +82,7 @@ const Services: React.FC = () => {
                 </h5>
                 <p>{s?.desc}</p>
               </div>
-            </div>
+            </div> */}
           </ScrollAnimation>
         ))}
       </div>

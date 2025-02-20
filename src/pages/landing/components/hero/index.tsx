@@ -5,7 +5,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 const LandingHero: React.FC = () => {
   return (
-    <div className=" bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center  md:py-0 md:pb-20">
+    <div className=" bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center md:py-0 pb-10 md:pb-20">
       <div className=" max-w-7xl mx-auto px-5 w-full">
         <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-2">
           <ScrollAnimation
@@ -18,7 +18,7 @@ const LandingHero: React.FC = () => {
             <div className=" py-10 order-1">
               <iframe
                 width="100%"
-                height="350px"
+                height="220px"
                 className="rounded-md"
                 src="https://www.youtube.com/embed/rsV8ZB-DnAM"
                 title="Harley-Davidson Breakout Sunset Ride | Pure Engine Sound"
@@ -26,6 +26,7 @@ const LandingHero: React.FC = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 // referrerpolicy="strict-origin-when-cross-origin"
                 // allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
           </ScrollAnimation>
@@ -57,6 +58,7 @@ const LandingHero: React.FC = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 // referrerpolicy="strict-origin-when-cross-origin"
                 // allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
           </ScrollAnimation>
