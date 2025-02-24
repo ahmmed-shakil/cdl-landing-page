@@ -18,7 +18,7 @@ const ContactUs = () => {
     <div className="max-w-7xl mx-auto px-4 pt-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Left: Contact Form */}
       <ScrollAnimation
-        className=" col-span-2"
+        className="md:col-span-2"
         animateIn="slideInUp"
         animateOnce
       >

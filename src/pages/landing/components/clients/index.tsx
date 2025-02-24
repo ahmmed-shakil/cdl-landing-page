@@ -22,7 +22,7 @@ const Clients: React.FC = () => {
         {/* First row - 1 item */}
         <ScrollAnimation animateIn="fadeInDown" duration={1} animateOnce>
           <div className="flex justify-center">
-            <div className="bg-slate-50 border border-slate-200 p-4 rounded-md shadow-lg w-28">
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-md shadow-lg w-24">
               <img
                 src={clients[0] || "/placeholder.svg"}
                 className="w-full h-16 object-contain"
@@ -55,7 +55,7 @@ const Clients: React.FC = () => {
         {/* Third row - 1 item */}
         <ScrollAnimation animateIn="fadeInDown" duration={1} animateOnce>
           <div className="flex justify-center">
-            <div className="bg-slate-50 border border-slate-200 p-4 rounded-md shadow-lg w-28">
+            <div className="bg-slate-50 border border-slate-200 p-4 rounded-md shadow-lg w-24">
               <img
                 src={clients[4] || "/placeholder.svg"}
                 className="w-full h-16 object-contain"

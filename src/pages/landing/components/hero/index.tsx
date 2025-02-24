@@ -70,7 +70,7 @@ const LandingHero: React.FC = () => {
           duration={1}
           animateOnce
         >
-          <div className="relative mt-5 md:mt-3 ">
+          <div className="relative mt-5 md:mt-3  ">
             {/* Badge */}
             {/* <div className="absolute left-1/2 -translate-x-1/2 -top-3 z-20 block md:hidden">
             <div className="relative">
@@ -86,7 +86,7 @@ const LandingHero: React.FC = () => {
             </div>
           </div> */}
             {/* Content */}
-            <div className="rounded-md p-10 bg-slate-50 shadow-md relative z-10">
+            <div className="rounded-md p-10 bg-white shadow-md relative z-10">
               <FeatureCard />
             </div>
           </div>

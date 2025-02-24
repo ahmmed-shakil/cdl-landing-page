@@ -1,27 +1,32 @@
 import React from "react";
 import SubHeading from "../../../../components/ui/sub-heading";
 import ScrollAnimation from "react-animate-on-scroll";
+import bg1 from "../../../../assets/img/cards/card_1.png";
+import bg2 from "../../../../assets/img/cards/card_2.png";
+import bg3 from "../../../../assets/img/cards/card_3.png";
+import bg4 from "../../../../assets/img/cards/card_4.png";
+
 const Industries: React.FC = () => {
   const fields = [
     {
       title: "Healthcare",
-      bgColor: "bg-blue-200",
+      bgImage: bg1,
     },
     {
       title: "Finance",
-      bgColor: "bg-green-200",
+      bgImage: bg2,
     },
     {
       title: "Industries",
-      bgColor: "bg-yellow-200",
+      bgImage: bg3,
     },
     {
       title: "Food & Beverages",
-      bgColor: "bg-red-200",
+      bgImage: bg4,
     },
     {
       title: "Construction",
-      bgColor: "bg-gray-200",
+      bgImage: bg1, // Reusing bg1 for the fifth item, you can change this as needed
     },
   ];
 
@@ -40,21 +45,22 @@ const Industries: React.FC = () => {
           {fields.map((field, index) => (
             <ScrollAnimation
               animateIn="zoomIn"
-              className=" h-full"
+              className="h-full"
               key={index}
               animateOnce
               duration={1}
             >
               <div
-                className={`p-6 rounded-xl border border-slate-300 bg-white text-center text-sm md:text-lg font-medium`}
+                className="p-6 rounded-xl border border-slate-300 text-center text-sm md:text-lg font-medium relative overflow-hidden group"
+                style={{
+                  backgroundImage: `url(${field.bgImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center",
+                }}
               >
-                {field.title}
+                {/* <div className="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300" /> */}
+                <span className="relativ z-10">{field.title}</span>
               </div>
-              {/* <div
-                className={`p-6 rounded-xl shadow-md text-center text-sm md:text-lg font-medium ${field.bgColor}`}
-              >
-                {field.title}
-              </div> */}
             </ScrollAnimation>
           ))}
         </div>

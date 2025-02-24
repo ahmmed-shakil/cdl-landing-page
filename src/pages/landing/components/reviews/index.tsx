@@ -68,7 +68,7 @@ const Review: React.FC = () => {
                 <div
                   key={id}
                   // className="relative bg-white overflow-hidden h-[460px] md:h-[400px] flex flex-col"
-                  className="relative overflow-hidden h-[460px] md:h-[400px] flex flex-col px-5 md:border rounded-md border-slate-200"
+                  className="relative overflow-hidden h-[465px] md:h-[400px] flex flex-col px-5 md:border rounded-md border-slate-200"
                 >
                   <div className="p-6 md:px-20 flex flex-col justify-between h-full">
                     {/* Content */}

@@ -1,11 +1,11 @@
 import React from "react";
 import SubHeading from "../../../../components/ui/sub-heading";
 import web from "../../../../assets/img/icons/web_dev.png";
-import soft from "../../../../assets/img/icons/software_sol.png";
+import soft from "../../../../assets/img/icons/software_1.png";
 import cloud from "../../../../assets/img/icons/cloud.png";
-import digital from "../../../../assets/img/icons/digital_marketing.png";
-import it from "../../../../assets/img/icons/it_consult.png";
-import branding from "../../../../assets/img/icons/branding.png";
+import digital from "../../../../assets/img/icons/digital_marketing_1.png";
+import it from "../../../../assets/img/icons/it_consult_1.png";
+import branding from "../../../../assets/img/icons/branding_1.png";
 import ScrollAnimation from "react-animate-on-scroll";
 
 const Services: React.FC = () => {
@@ -67,7 +67,7 @@ const Services: React.FC = () => {
                 <img src={s?.icon} />
               </div>
               <div>
-                <h5 className=" pt-2 pb-0 mb-0 text-md md:text-lg font-semibold">
+                <h5 className=" pt-3 pb-0 mb-0 text-sm md:text-lg">
                   {s?.title}
                 </h5>
               </div>

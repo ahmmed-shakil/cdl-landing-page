@@ -20,7 +20,7 @@ const FeatureCard: React.FC = () => {
   );
   const projectsCard = (
     <div className=" flex items-center gap-5">
-      <img className="w-10 md:w-12 h-10 md:h-12" src={projectceIcon} />
+      <img className="w-10 md:w-10 h-10 md:h-12" src={projectceIcon} />
       <div>
         <div>
           <p className=" font-semibold">
@@ -33,7 +33,7 @@ const FeatureCard: React.FC = () => {
   );
   const satifactionCard = (
     <div className=" flex gap-5 items-center">
-      <img className="w-10 md:w-12 h-10 md:h-12" src={clientIcon} />
+      <img className="w-10 md:w-14 h-10 md:h-12" src={clientIcon} />
       <div>
         <div>
           <p className=" font-semibold">
@@ -60,7 +60,7 @@ const FeatureCard: React.FC = () => {
     </div>
   );
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-4 items-center gap-4 md:divide-x divide-slate-500">
+    <div className=" grid grid-cols-1 md:grid-cols-4 bg-white items-center gap-4 md:divide-x divide-slate-500">
       <div>{experienceCard}</div>
       <div>{projectsCard}</div>
       <div>{satifactionCard}</div>
