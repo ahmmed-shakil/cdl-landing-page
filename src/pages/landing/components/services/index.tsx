@@ -33,12 +33,27 @@ const Services: React.FC = () => {
     {
       title: "IT Consultation",
       desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
-      icon: it,
+      icon: branding,
     },
     {
       title: "Branding",
       desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
-      icon: branding,
+      icon: it,
+    },
+    {
+      title: "Cybersecurity ",
+      desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
+      icon: it,
+    },
+    {
+      title: "App Development ",
+      desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
+      icon: it,
+    },
+    {
+      title: "Blockchain ",
+      desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
+      icon: it,
     },
   ];
   return (
@@ -62,7 +77,7 @@ const Services: React.FC = () => {
             animateOnce
             duration={1}
           >
-            <div className="p-2 md:pt-4 rounded-md  flex flex-col items-center mt-5 h-full hover:bg-gray-200 transition-all duration-150 ease-in-out ">
+            <div className="p-2 hover:shadow md:pt-4 rounded-md  flex flex-col items-center mt-5 h-full hover:bg-gray-50 transition-all duration-150 ease-in-out ">
               <div className=" w-14 h-14">
                 <img src={s?.icon} />
               </div>

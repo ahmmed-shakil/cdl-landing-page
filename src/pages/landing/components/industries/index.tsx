@@ -1,10 +1,12 @@
 import React from "react";
 import SubHeading from "../../../../components/ui/sub-heading";
 import ScrollAnimation from "react-animate-on-scroll";
-import bg1 from "../../../../assets/img/cards/card_1.png";
-import bg2 from "../../../../assets/img/cards/card_2.png";
-import bg3 from "../../../../assets/img/cards/card_3.png";
-import bg4 from "../../../../assets/img/cards/card_4.png";
+import bg1 from "../../../../assets/img/cards/health.png";
+// import bg2 from "../../../../assets/img/cards/card_2.png";
+import bg3 from "../../../../assets/img/cards/ind.png";
+import bg4 from "../../../../assets/img/cards/food.png";
+import bg5 from "../../../../assets/img/cards/card_5.png";
+import bg6 from "../../../../assets/img/cards/cons.png";
 
 const Industries: React.FC = () => {
   const fields = [
@@ -14,7 +16,7 @@ const Industries: React.FC = () => {
     },
     {
       title: "Finance",
-      bgImage: bg2,
+      bgImage: bg5,
     },
     {
       title: "Industries",
@@ -26,7 +28,7 @@ const Industries: React.FC = () => {
     },
     {
       title: "Construction",
-      bgImage: bg1, // Reusing bg1 for the fifth item, you can change this as needed
+      bgImage: bg6,
     },
   ];
 
