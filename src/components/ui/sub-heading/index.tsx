@@ -9,7 +9,7 @@ const SubHeading: React.FC<TSubHeadingProp> = ({ content }) => {
     <div>
       <p
         className=" text-blue-700 text-xs font-semibold"
-        style={{ letterSpacing: "10px" }}
+        style={{ letterSpacing: "10px", textTransform: "uppercase" }}
       >
         {content}
       </p>

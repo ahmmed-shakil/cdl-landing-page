@@ -5,6 +5,7 @@ import user1 from "../../../../assets/img/reviews/udak.png";
 import user2 from "../../../../assets/img/reviews/user-1.jpeg";
 import user3 from "../../../../assets/img/reviews/user-2.jpeg";
 import ScrollAnimation from "react-animate-on-scroll";
+// import WhyUs from "../why-us";
 
 const people = [
   {
@@ -39,6 +40,9 @@ const Review: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-blue-50 to-neutral-50">
       <div className="max-w-7xl mx-auto py-16 space-y-6 px-6">
+        {/* <ScrollAnimation animateIn="zoomIn" animateOnce>
+          <WhyUs />
+        </ScrollAnimation> */}
         <ScrollAnimation animateIn="fadeInDown" duration={2} animateOnce>
           <SubHeading content="TESTIMONIALS" />
         </ScrollAnimation>

@@ -86,18 +86,16 @@ const LandingHero: React.FC = () => {
             </div>
           </div> */}
             {/* Content */}
-            <h5 className=" mb-2 font-semibold text-md md:text-lg">
-              Why Businesses Trust Us{" "}
-            </h5>
-            <p>
-              Startups and enterprises face constant challenges—scalability,
-              security, and cost efficiency. CDL provides IT and marketing
-              solutions designed to{" "}
-              <span className=" font-semibold">remove roadblocks</span>,
-              <span className=" font-semibold">accelerate growth</span>, and{" "}
-              <span className=" font-semibold">ensure long-term stability</span>
-              .
-            </p>
+            <ScrollAnimation
+              animateIn="slideInUp"
+              initiallyVisible
+              duration={1}
+              animateOnce
+            >
+              <h5 className="text-xl md:text-4xl font-semibold mt-10 md:mt-0">
+                Why Businesses Trust Us{" "}
+              </h5>
+            </ScrollAnimation>
             <div className="rounded-md p-10 bg-white shadow-md relative z-10 mt-4">
               <FeatureCard />
             </div>

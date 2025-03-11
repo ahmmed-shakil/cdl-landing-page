@@ -12,6 +12,8 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
     "antd": "^5.24.0",
+    "axios": "^1.8.2",
+    "framer-motion": "^12.4.7",
     "react": "^19.0.0",
     "react-animate-on-scroll": "^2.1.9",
     "react-dom": "^19.0.0",

@@ -1,12 +1,12 @@
 import React from "react";
 import SubHeading from "../../../../components/ui/sub-heading";
 import ScrollAnimation from "react-animate-on-scroll";
-import bg1 from "../../../../assets/img/cards/health.png";
+import bg1 from "../../../../assets/img/cards/health_rp.png";
 // import bg2 from "../../../../assets/img/cards/card_2.png";
-import bg3 from "../../../../assets/img/cards/ind.png";
-import bg4 from "../../../../assets/img/cards/food.png";
-import bg5 from "../../../../assets/img/cards/card_5.png";
-import bg6 from "../../../../assets/img/cards/cons.png";
+import bg3 from "../../../../assets/img/cards/ind_rp.png";
+import bg4 from "../../../../assets/img/cards/food_rp.png";
+import bg5 from "../../../../assets/img/cards/finance_rp.png";
+import bg6 from "../../../../assets/img/cards/cons_rp.png";
 
 const Industries: React.FC = () => {
   const fields = [
@@ -58,6 +58,7 @@ const Industries: React.FC = () => {
                   backgroundImage: `url(${field.bgImage})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
                 }}
               >
                 {/* <div className="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300" /> */}

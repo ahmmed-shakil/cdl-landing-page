@@ -101,7 +101,7 @@ const ContactUs = () => {
       <ScrollAnimation
         animateIn="slideInUp"
         className=" h-full"
-        duration={2}
+        duration={1}
         animateOnce
       >
         {/* Right: Contact Info */}

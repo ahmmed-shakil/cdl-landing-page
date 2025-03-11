@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from "react";
+"use client";
+
+import type React from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import client1 from "../../../../assets/img/clients/arora.png";
 import client2 from "../../../../assets/img/clients/ribango.png";
 import client3 from "../../../../assets/img/clients/trading.png";
@@ -8,7 +12,6 @@ import client6 from "../../../../assets/img/clients/pog.png";
 import client7 from "../../../../assets/img/clients/perfo.png";
 import client8 from "../../../../assets/img/clients/mw.png";
 import client9 from "../../../../assets/img/clients/guru_nanak.png";
-import ScrollAnimation from "react-animate-on-scroll";
 
 const Clients: React.FC = () => {
   // Include all 9 clients
@@ -25,114 +28,186 @@ const Clients: React.FC = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoRotating, setIsAutoRotating] = useState(true);
 
-  // Auto-rotate featured client on mobile
+  // Auto-rotate featured client
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % clients.length);
-    }, 3000);
+    let interval: number;
+
+    if (isAutoRotating) {
+      interval = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % clients.length);
+      }, 8000);
+    }
 
     return () => clearInterval(interval);
-  }, [clients.length]);
+  }, [clients.length, isAutoRotating]);
 
-  // Animation variants for different positions in mobile carousel
-  const getMobileAnimClass = (index: number) => {
-    const position = (index - activeIndex + clients.length) % clients.length;
-    console.log("🚀 ~ getMobileAnimClass ~ position:", position);
+  // Pause auto-rotation when user interacts
+  const handleClientClick = (index: number) => {
+    // Don't do anything if clicking the sun
+    if (index === activeIndex) return;
 
-    if (position === 0) return "fadeInUp"; // Center featured
-    if (position === 1 || position === clients.length - 1) return "fadeInRight"; // Adjacent right/left
-    if (position === 2 || position === clients.length - 2) return "fadeInDown"; // Secondary right/left
-    if (position === 3 || position === clients.length - 3) return "fadeInLeft"; // Far right/left
-    if (position === 4 || position === clients.length - 4) return "fadeInDown"; // Top right/left positions
-    return "fadeIn"; // Others
+    setIsAutoRotating(false);
+    setActiveIndex(index);
+
+    // Resume auto-rotation after 15 seconds of inactivity
+    const timer = setTimeout(() => {
+      setIsAutoRotating(true);
+    }, 15000);
+
+    return () => clearTimeout(timer);
+  };
+
+  // Get array of client indices excluding the active one
+  const getOrbitingClientIndices = () => {
+    return clients
+      .map((_, index) => index)
+      .filter((index) => index !== activeIndex);
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-16 px-6 overflow-hidden">
-      <ScrollAnimation animateIn="fadeInDown" duration={1} animateOnce>
-        <div className="mb-12 text-center">
-          <h3 className="text-xl md:text-4xl font-semibold text-slate-800">
-            Trusted by Industry Leaders
-          </h3>
-        </div>
-      </ScrollAnimation>
+    <div className="max-w-7xl mx-auto py-16 px-2 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mb-12 text-center"
+      >
+        <h3 className="text-xl md:text-4xl font-semibold text-slate-800">
+          Trusted By Renowned Brands
+        </h3>
+      </motion.div>
 
-      {/* Mobile Layout - Improved Orbit System */}
-      <div className="md:hidden relative h-80 mb-8">
-        {/* Center (Featured) Client */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <ScrollAnimation
-            animateIn="pulse"
-            duration={1}
-            initiallyVisible={true}
+      {/* Mobile Layout - Solar System */}
+      <div className="md:hidden relative h-96 mb-16">
+        {/* Orbital System Container - Centered */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {/* Single Orbital Path */}
+          <motion.div
+            className="absolute rounded-full border border-slate-200"
+            style={{
+              width: 280,
+              height: 280,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+          />
+
+          {/* Center Sun (Active Client) */}
+          <motion.div
+            // className="absolute z-30"
+            className="absolute"
+            animate={{ scale: [0.95, 1.05, 0.95] }}
+            transition={{
+              scale: { repeat: Number.POSITIVE_INFINITY, duration: 3 },
+            }}
           >
-            <div className="bg-white border-2 border-blue-400 p-5 rounded-lg shadow-xl w-32 h-32 flex items-center justify-center">
+            <motion.div
+              className="bg-white border border-blue-500 shadow-lg mt-12 ml-1 rounded-full w-32 h-32 flex items-center justify-center"
+              initial={false}
+              animate={{
+                boxShadow: [
+                  "0 0 10px rgba(0, 0, 255, 0.5)",
+                  "0 0 20px rgba(0, 0, 255, 0.7)",
+                  "0 0 10px rgba(0, 0, 255, 0.5)",
+                ],
+              }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2 }}
+            >
               <img
                 src={clients[activeIndex].img || "/placeholder.svg"}
-                className="w-full h-full object-contain"
+                className="w-24 h-24 object-contain"
                 alt={`${clients[activeIndex].name} logo`}
               />
-            </div>
-          </ScrollAnimation>
-        </div>
+            </motion.div>
+          </motion.div>
 
-        {/* Orbiting Clients - Enhanced with top positions */}
-        {clients.map(
-          (client, i) =>
-            i !== activeIndex && (
-              <div
-                key={i}
-                className={`absolute transition-all duration-500 ease-in-out ${
-                  // Dynamic positioning with top positions added
-                  i === (activeIndex + 1) % clients.length
-                    ? "top-1/4 right-4 z-10" // right
-                    : i === (activeIndex + 2) % clients.length
-                    ? "top-1/2 right-0 z-0" // far right
-                    : i === (activeIndex + clients.length - 1) % clients.length
-                    ? "top-1/4 left-4 z-10" // left
-                    : i === (activeIndex + clients.length - 2) % clients.length
-                    ? "top-1/2 left-0 z-0" // far left
-                    : i === (activeIndex + 3) % clients.length
-                    ? "bottom-4 right-1/4 z-0" // bottom right
-                    : i === (activeIndex + clients.length - 3) % clients.length
-                    ? "bottom-4 left-1/4 z-0" // bottom left
-                    : i === (activeIndex + 4) % clients.length
-                    ? "top-0 right-1/4 z-10" // top right
-                    : i === (activeIndex + clients.length - 4) % clients.length
-                    ? "top-0 left-1/4 z-10" // top left
-                    : "opacity-0 scale-50" // others hidden
-                }`}
-              >
-                <ScrollAnimation
-                  animateIn={getMobileAnimClass(i)}
-                  duration={1}
-                  initiallyVisible={true}
+          {/* Planetary Orbit System */}
+          <div className="absolute right-5 w-full h-full">
+            {/* Orbiting Planets (Other Clients) */}
+            {/* <AnimatePresence> */}
+            {getOrbitingClientIndices().map((clientIndex, i) => {
+              // Calculate position on orbit
+              const orbitingClients = getOrbitingClientIndices().length;
+              const angleStep = (2 * Math.PI) / orbitingClients;
+              const angle = i * angleStep;
+              const orbitRadius = 140; // Orbit radius (half of the 280px circle)
+
+              // Calculate position (start from top, go clockwise)
+              const x = orbitRadius * Math.sin(angle);
+              const y = -orbitRadius * Math.cos(angle);
+
+              return (
+                <motion.div
+                  key={`planet-${clientIndex}`}
+                  // className="absolute z-20"
+                  className="absolute"
+                  style={{
+                    left: "50%",
+                    top: "50%",
+                    marginLeft: "-20px", // Half of the width of the orbiting item
+                    marginTop: "-20px", // Half of the height of the orbiting item
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    x,
+                    y,
+                  }}
+                  exit={{ opacity: 0, scale: 0 }}
+                  transition={{
+                    type: "spring",
+                    damping: 15,
+                    stiffness: 100,
+                  }}
+                  onClick={() => handleClientClick(clientIndex)}
                 >
-                  <div
-                    className={`bg-slate-50 border border-slate-200 p-3 rounded-md shadow-md w-16 h-16 flex items-center justify-center opacity-80 hover:opacity-100 cursor-pointer transform hover:scale-110 transition-all`}
-                    onClick={() => setActiveIndex(i)}
+                  <motion.div
+                    className="bg-white border border-slate-200 rounded-full shadow-md w-20 h-20 flex items-center justify-center cursor-pointer"
+                    whileHover={{
+                      scale: 1.2,
+                      boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)",
+                    }}
                   >
                     <img
-                      src={client.img || "/placeholder.svg"}
-                      className="w-full h-full object-contain"
-                      alt={`${client.name} logo`}
+                      src={clients[clientIndex].img || "/placeholder.svg"}
+                      className="w-10 h-10 object-contain"
+                      alt={`${clients[clientIndex].name} logo`}
                     />
-                  </div>
-                </ScrollAnimation>
-              </div>
-            )
-        )}
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+            {/* </AnimatePresence> */}
+          </div>
 
-        {/* Mobile Navigation Dots - Improved spacing */}
-        <div className="absolute bottom-[-24px] left-1/2 transform -translate-x-1/2 flex space-x-2 mt-4">
+          {/* Rotating Orbit Animation */}
+          <motion.div
+            className="absolute w-full h-full pointer-events-none"
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Number.POSITIVE_INFINITY,
+              duration: 30,
+              ease: "linear",
+            }}
+          />
+        </div>
+
+        {/* Mobile Navigation Dots */}
+        <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {clients.map((_, i) => (
-            <div
+            <motion.div
               key={i}
-              onClick={() => setActiveIndex(i)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                i === activeIndex ? "bg-blue-500 w-4" : "bg-slate-300"
+              onClick={() => handleClientClick(i)}
+              className={`h-2 rounded-full transition-all cursor-pointer ${
+                i === activeIndex ? "bg-blue-500" : "bg-slate-300"
               }`}
+              animate={{
+                width: i === activeIndex ? 16 : 8,
+              }}
+              transition={{ duration: 0.2 }}
               aria-label={`View client ${i + 1}`}
             />
           ))}
@@ -142,29 +217,28 @@ const Clients: React.FC = () => {
       {/* Tablet Layout (3x3 Grid) */}
       <div className="hidden md:grid lg:hidden md:grid-cols-3 gap-6">
         {clients.map((client, i) => (
-          <ScrollAnimation
+          <motion.div
             key={i}
-            animateIn={
-              i % 3 === 0
-                ? "fadeInLeft"
-                : i % 3 === 2
-                ? "fadeInRight"
-                : "fadeInUp"
-            }
-            delay={i * 100}
-            duration={1}
-            animateOnce
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: i * 0.1,
+              type: "spring",
+              stiffness: 100,
+            }}
+            className="bg-white border border-slate-200 p-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group"
           >
-            <div className="bg-white border border-slate-200 p-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group">
-              <div className="overflow-hidden">
-                <img
-                  src={client.img || "/placeholder.svg"}
-                  className="w-full h-20 object-contain transform group-hover:scale-110 transition-transform duration-300"
-                  alt={`${client.name} logo`}
-                />
-              </div>
+            <div className="overflow-hidden">
+              <motion.img
+                src={client.img || "/placeholder.svg"}
+                className="w-full h-20 object-contain"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+                alt={`${client.name} logo`}
+              />
             </div>
-          </ScrollAnimation>
+          </motion.div>
         ))}
       </div>
 
@@ -173,59 +247,68 @@ const Clients: React.FC = () => {
         {/* Row 1 - 3 logos */}
         <div className="col-span-1"></div>
         {clients.slice(0, 3).map((client, i) => (
-          <ScrollAnimation
+          <motion.div
             key={i}
-            animateIn="fadeInDown"
-            delay={i * 150}
-            duration={1}
-            animateOnce
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: i * 0.15,
+              type: "spring",
+            }}
+            className="bg-white border border-slate-200 p-6 rounded-lg shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300"
+            whileHover={{ y: -5 }}
           >
-            <div className="bg-white border border-slate-200 p-6 rounded-lg shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1">
-              <img
-                src={client.img || "/placeholder.svg"}
-                className="w-full h-24 object-contain"
-                alt={`${client.name} logo`}
-              />
-            </div>
-          </ScrollAnimation>
+            <img
+              src={client.img || "/placeholder.svg"}
+              className="w-full h-24 object-contain"
+              alt={`${client.name} logo`}
+            />
+          </motion.div>
         ))}
         <div className="col-span-1"></div>
 
         {/* Row 2 - All 5 logos */}
         {clients.slice(3, 8).map((client, i) => (
-          <ScrollAnimation
+          <motion.div
             key={i + 3}
-            animateIn={i % 2 === 0 ? "fadeInLeft" : "fadeInRight"}
-            delay={300 + i * 100}
-            duration={1}
-            animateOnce
+            initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.3 + i * 0.1,
+              type: "spring",
+            }}
+            className="bg-white border border-slate-200 p-6 rounded-lg shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300"
+            whileHover={{ y: -5 }}
           >
-            <div className="bg-white border border-slate-200 p-6 rounded-lg shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1">
-              <img
-                src={client.img || "/placeholder.svg"}
-                className="w-full h-24 object-contain"
-                alt={`${client.name} logo`}
-              />
-            </div>
-          </ScrollAnimation>
+            <img
+              src={client.img || "/placeholder.svg"}
+              className="w-full h-24 object-contain"
+              alt={`${client.name} logo`}
+            />
+          </motion.div>
         ))}
 
         {/* Row 3 - 1 logo centered */}
         <div className="col-span-2"></div>
-        <ScrollAnimation
-          animateIn="fadeInUp"
-          delay={800}
-          duration={1}
-          animateOnce
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.8,
+            type: "spring",
+          }}
+          className="bg-white border border-slate-200 p-6 rounded-lg shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300"
+          whileHover={{ y: -5 }}
         >
-          <div className="bg-white border border-slate-200 p-6 rounded-lg shadow-md hover:shadow-xl hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1">
-            <img
-              src={clients[8].img || "/placeholder.svg"}
-              className="w-full h-24 object-contain"
-              alt={`${clients[8].name} logo`}
-            />
-          </div>
-        </ScrollAnimation>
+          <img
+            src={clients[8].img || "/placeholder.svg"}
+            className="w-full h-24 object-contain"
+            alt={`${clients[8].name} logo`}
+          />
+        </motion.div>
         <div className="col-span-2"></div>
       </div>
     </div>

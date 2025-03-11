@@ -4,8 +4,11 @@ import web from "../../../../assets/img/icons/web_dev.png";
 import soft from "../../../../assets/img/icons/software_1.png";
 import cloud from "../../../../assets/img/icons/cloud.png";
 import digital from "../../../../assets/img/icons/digital_marketing_1.png";
-import it from "../../../../assets/img/icons/it_consult_1.png";
+// import it from "../../../../assets/img/icons/it_consult_1.png";
 import branding from "../../../../assets/img/icons/branding_1.png";
+import cyber from "../../../../assets/img/icons/cyber.png";
+import app from "../../../../assets/img/icons/app_dev.png";
+import automation from "../../../../assets/img/icons/automation.png";
 import ScrollAnimation from "react-animate-on-scroll";
 
 const Services: React.FC = () => {
@@ -35,25 +38,25 @@ const Services: React.FC = () => {
       desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
       icon: branding,
     },
-    {
-      title: "Branding",
-      desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
-      icon: it,
-    },
+    // {
+    //   title: "Branding",
+    //   desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
+    //   icon: it,
+    // },
     {
       title: "Cybersecurity ",
       desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
-      icon: it,
+      icon: cyber,
     },
     {
       title: "App Development ",
       desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
-      icon: it,
+      icon: app,
     },
     {
-      title: "Blockchain ",
+      title: "AI & Automation ",
       desc: "Providing expert guidance to optimize technology strategies and solutions for business success.",
-      icon: it,
+      icon: automation,
     },
   ];
   return (

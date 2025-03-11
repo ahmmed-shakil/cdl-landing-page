@@ -1,7 +1,7 @@
 import React from "react";
 import experienceIcon from "../../../../assets/img/icons/field_exp.png";
-import projectceIcon from "../../../../assets/img/icons/projects_done.png";
-import clientIcon from "../../../../assets/img/icons/customer_staisfaction.png";
+import projectceIcon from "../../../../assets/img/icons/growth_focused.png";
+import clientIcon from "../../../../assets/img/icons/cost_effective.png";
 import responseIcon from "../../../../assets/img/icons/response_time.png";
 
 const FeatureCard: React.FC = () => {
@@ -26,12 +26,11 @@ const FeatureCard: React.FC = () => {
       <div>
         <div>
           <p className=" font-semibold">
-            <span className=" text-lg md:text-2xl">10+</span> Projects
+            <span className=" text-lg md:text-2xl">Growth</span> Focused
+            {/* <span className=" text-lg md:text-2xl">10+</span> Projects */}
           </p>
           {/* <p className=" text-blue-700 text-sm md:text-lg">Done Around World</p> */}
-          <p className=" text-blue-700 text-sm md:text-md">
-            Growth Focused Strategy
-          </p>
+          <p className=" text-blue-700 text-sm md:text-md">Strategy</p>
         </div>
       </div>
     </div>
@@ -42,11 +41,9 @@ const FeatureCard: React.FC = () => {
       <div>
         <div>
           <p className=" font-semibold">
-            <span className=" text-lg md:text-2xl">99%</span>
+            <span className=" text-lg md:text-2xl">Cost</span> Effective
           </p>
-          <p className=" text-blue-700 text-sm md:text-md">
-            Cost-Effective Scaling
-          </p>
+          <p className=" text-blue-700 text-sm md:text-md">Scaling</p>
           {/* <p className=" text-blue-700 text-sm md:text-md">
             Client Satisfaction
           </p> */}
