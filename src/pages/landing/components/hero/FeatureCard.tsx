@@ -7,7 +7,7 @@ import responseIcon from "../../../../assets/img/icons/response_time.png";
 const FeatureCard: React.FC = () => {
   const experienceCard = (
     <div className=" flex gap-5 items-center">
-      <img className="w-12 md:w-12 h-10 md:h-12" src={experienceIcon} />
+      <img className="w-10 md:w-12 h-10 md:h-12" src={experienceIcon} />
       <div>
         <div>
           <p className=" font-semibold">
@@ -22,7 +22,7 @@ const FeatureCard: React.FC = () => {
   );
   const projectsCard = (
     <div className=" flex items-center gap-5">
-      <img className="w-10 md:w-12 h-10 md:h-12" src={projectceIcon} />
+      <img className="w-12 md:w-14 h-12 md:h-14" src={projectceIcon} />
       <div>
         <div>
           <p className=" font-semibold">

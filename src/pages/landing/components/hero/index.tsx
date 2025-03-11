@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LeftContent from "./LeftContent";
 import FeatureCard from "./FeatureCard";
 import ScrollAnimation from "react-animate-on-scroll";
@@ -6,14 +6,15 @@ import ScrollAnimation from "react-animate-on-scroll";
 const LandingHero: React.FC = () => {
   const mobileVideoRef = useRef<HTMLIFrameElement>(null);
   const desktopVideoRef = useRef<HTMLIFrameElement>(null);
+  const [videoInitialized, setVideoInitialized] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    // Function to handle user interaction and enable sound
+    // Function to handle user interaction and enable sound only once
     const enableSound = () => {
-      try {
-        // Determine if we're on mobile or desktop
-        const isMobile = window.innerWidth < 768; // md breakpoint in Tailwind
+      if (videoInitialized) return;
 
+      try {
         // Enable the appropriate video based on screen size
         if (isMobile && mobileVideoRef.current) {
           const src = mobileVideoRef.current.src;
@@ -22,6 +23,8 @@ const LandingHero: React.FC = () => {
           const src = desktopVideoRef.current.src;
           desktopVideoRef.current.src = src;
         }
+
+        setVideoInitialized(true);
 
         // Remove the event listeners once executed
         document.removeEventListener("click", enableSound);
@@ -37,42 +40,15 @@ const LandingHero: React.FC = () => {
     document.addEventListener("touchstart", enableSound);
     document.addEventListener("keydown", enableSound);
 
-    // Function to handle screen resizing
+    // Function to handle screen resizing without reloading videos
     const handleResize = () => {
-      const isMobile = window.innerWidth < 768;
+      const newIsMobile = window.innerWidth < 768;
 
-      // Pause both videos first
-      if (mobileVideoRef.current) {
-        mobileVideoRef.current.src = mobileVideoRef.current.src.replace(
-          "autoplay=1",
-          "autoplay=0"
-        );
+      // Only update state if the breakpoint changed
+      if (newIsMobile !== isMobile) {
+        setIsMobile(newIsMobile);
       }
-      if (desktopVideoRef.current) {
-        desktopVideoRef.current.src = desktopVideoRef.current.src.replace(
-          "autoplay=1",
-          "autoplay=0"
-        );
-      }
-
-      // After a short delay, enable the appropriate one
-      setTimeout(() => {
-        if (isMobile && mobileVideoRef.current) {
-          mobileVideoRef.current.src = mobileVideoRef.current.src.replace(
-            "autoplay=0",
-            "autoplay=1"
-          );
-        } else if (!isMobile && desktopVideoRef.current) {
-          desktopVideoRef.current.src = desktopVideoRef.current.src.replace(
-            "autoplay=0",
-            "autoplay=1"
-          );
-        }
-      }, 300);
     };
-
-    // Initially set up the correct video state
-    handleResize();
 
     // Add event listener for window resize
     window.addEventListener("resize", handleResize);
@@ -84,33 +60,40 @@ const LandingHero: React.FC = () => {
       document.removeEventListener("keydown", enableSound);
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [isMobile, videoInitialized]);
+
+  // Prepare video URL with the correct parameters
+  const videoUrl =
+    "https://www.youtube.com/embed/SbP-razlJnc?autoplay=1&mute=0";
 
   return (
     <div className="bg-gradient-to-r from-blue-50 to-neutral-50 min-h-screen flex items-center md:py-0 pb-10 md:pb-20">
       <div className="max-w-7xl mx-auto px-5 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-2">
-          <ScrollAnimation
-            animateIn="fadeInDown"
-            initiallyVisible
-            duration={2}
-            className="block md:hidden"
-            animateOnce
-          >
-            <div className="py-10 order-1">
-              <iframe
-                ref={mobileVideoRef}
-                width="100%"
-                height="220px"
-                className="rounded-md"
-                src="https://www.youtube.com/embed/SbP-razlJnc?autoplay=1&mute=0"
-                title="Your Software is Killing Your Business! Fix It Before It's Too Late!"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-              {/* <p className="text-xs text-gray-500 mt-1">Click anywhere on the page to enable sound</p> */}
-            </div>
-          </ScrollAnimation>
+          {/* Mobile Video - Only render when in mobile view */}
+          {isMobile && (
+            <ScrollAnimation
+              animateIn="fadeInDown"
+              initiallyVisible
+              duration={2}
+              className="block md:hidden"
+              animateOnce
+            >
+              <div className="py-10 order-1">
+                <iframe
+                  ref={mobileVideoRef}
+                  width="100%"
+                  height="197px"
+                  className="rounded-md"
+                  src={videoUrl}
+                  title="Your Software is Killing Your Business! Fix It Before It's Too Late!"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </ScrollAnimation>
+          )}
+
           <ScrollAnimation
             animateOnce
             animateIn="fadeInDown"
@@ -121,28 +104,32 @@ const LandingHero: React.FC = () => {
               <LeftContent />
             </div>
           </ScrollAnimation>
-          <ScrollAnimation
-            animateOnce
-            animateIn="fadeInDown"
-            initiallyVisible
-            duration={2}
-            className="hidden md:block"
-          >
-            <div className="py-10 order-1">
-              <iframe
-                ref={desktopVideoRef}
-                width="100%"
-                height="346px"
-                className="rounded-md"
-                src="https://www.youtube.com/embed/SbP-razlJnc?autoplay=1&mute=0"
-                title="Your Software is Killing Your Business! Fix It Before It's Too Late!"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-              {/* <p className="text-xs text-gray-500 mt-1">Click anywhere on the page to enable sound</p> */}
-            </div>
-          </ScrollAnimation>
+
+          {/* Desktop Video - Only render when in desktop view */}
+          {!isMobile && (
+            <ScrollAnimation
+              animateOnce
+              animateIn="fadeInDown"
+              initiallyVisible
+              duration={2}
+              className="hidden md:block"
+            >
+              <div className="py-10 order-1">
+                <iframe
+                  ref={desktopVideoRef}
+                  width="100%"
+                  height="346px"
+                  className="rounded-md"
+                  src={videoUrl}
+                  title="Your Software is Killing Your Business! Fix It Before It's Too Late!"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </ScrollAnimation>
+          )}
         </div>
+
         <ScrollAnimation
           animateIn="slideInUp"
           initiallyVisible
