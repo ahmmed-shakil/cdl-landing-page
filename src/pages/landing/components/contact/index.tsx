@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import {
   MailOutlined,
   PhoneOutlined,
@@ -12,8 +12,39 @@ import SubHeading from "../../../../components/ui/sub-heading";
 // import { FaMapLocation } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import ScrollAnimation from "react-animate-on-scroll";
+import { useState } from "react";
+import axios from "axios";
 
 const ContactUs = () => {
+  const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onFinish = async (values: any) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "https://api.codedrivenlabs.com/api/contact-form",
+        values
+      );
+      // console.log("🚀 ~ onFinish ~ response:", response);
+      if (response?.statusText == "OK") {
+        message.success(
+          "Thank you for subscribing! We'll contact you shortly."
+        );
+      } else {
+        message.error(
+          response?.data?.message || "Something went wrong. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      message.error("Failed to submit the form. Please try again later.");
+    } finally {
+      setLoading(false);
+      form.resetFields();
+    }
+  };
   return (
     <div className="max-w-7xl mx-auto px-4 pt-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Left: Contact Form */}
@@ -37,37 +68,75 @@ const ContactUs = () => {
           </p>
 
           {/* Form */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input placeholder="First Name" className="h-12" />
-            <Input placeholder="Last Name" className="h-12" />
-          </div>
-          <div className="mt-4">
-            <Input placeholder="Your Email" className="h-12" />
-          </div>
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input placeholder="Your Number" className="h-12" />
-            <Input placeholder="Your Country" className="h-12" />
-          </div>
-          <div className="mt-4">
-            <Input.TextArea placeholder="Leave us a message..." rows={4} />
-          </div>
-
-          <div className="mt-4 flex items-start">
-            <Checkbox className="text-gray-500">
-              You agree to our{" "}
-              <a href="#" className="text-blue-600">
-                terms and conditions
-              </a>
-            </Checkbox>
-          </div>
-
-          <Button
-            type="primary"
-            size="large"
-            className="w-full mt-2 h-12 text-lg"
-          >
-            Get Started
-          </Button>
+          <Form layout="vertical" onFinish={onFinish} form={form}>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Form.Item
+                name="firstName"
+                rules={[{ required: true, message: "First Name is required" }]}
+              >
+                <Input placeholder="First Name" className="h-12" />
+              </Form.Item>
+              <Form.Item
+                name="lastName"
+                rules={[{ required: true, message: "Last Name is required" }]}
+              >
+                <Input placeholder="Last Name" className="h-12" />
+              </Form.Item>
+            </div>
+            <Form.Item
+              name="email"
+              rules={[
+                {
+                  type: "email",
+                  required: true,
+                  message: "Enter a valid email",
+                },
+              ]}
+            >
+              <Input placeholder="Your Email" className="h-12" />
+            </Form.Item>
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Form.Item
+                name="phone"
+                rules={[
+                  { required: true, message: "Phone number is required" },
+                ]}
+              >
+                <Input placeholder="Your Number" className="h-12" />
+              </Form.Item>
+              <Form.Item name="country">
+                <Input placeholder="Your Country" className="h-12" />
+              </Form.Item>
+            </div>
+            <Form.Item
+              name="message"
+              rules={[{ required: true, message: "Message is required" }]}
+            >
+              <Input.TextArea placeholder="Leave us a message..." rows={4} />
+            </Form.Item>
+            {/* <Form.Item
+              name="terms"
+              valuePropName="checked"
+              rules={[{ required: true, message: "You must accept the terms" }]}
+            >
+              <Checkbox className="text-gray-500">
+                You agree to our{" "}
+                <a href="#" className="text-blue-600">
+                  terms and conditions
+                </a>
+              </Checkbox>
+            </Form.Item> */}
+            <Button
+              type="primary"
+              htmlType="submit"
+              size="large"
+              className="w-full h-12 text-lg"
+              loading={loading}
+              disabled={loading}
+            >
+              Get Started
+            </Button>
+          </Form>
         </div>
       </ScrollAnimation>
 
@@ -107,7 +176,7 @@ const ContactUs = () => {
         {/* Right: Contact Info */}
         <div className="bg-gray-50 shadow-md rounded-lg p-8 ">
           {/* <FcCustomerSupport size={50} /> */}
-          <h4 className="text-lg mt-4 md:text-xl font-semibold">
+          <h4 className="text-lg mt-1 md:text-xl font-semibold">
             Contact Info
           </h4>
           <div className="mt-4 space-y-4 border-b border-slate-200 pb-6">

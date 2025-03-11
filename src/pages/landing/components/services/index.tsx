@@ -19,7 +19,7 @@ const Services: React.FC = () => {
       icon: web,
     },
     {
-      title: "Software Solutions",
+      title: "Software Solutions & ERP",
       desc: "Developing innovative software solutions to address complex challenges and enhance user experiences.",
       icon: soft,
     },

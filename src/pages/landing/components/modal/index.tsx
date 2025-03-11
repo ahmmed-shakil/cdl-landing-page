@@ -13,7 +13,7 @@ const { Option } = Select;
 
 const services = [
   "Web Development",
-  "Software Solutions",
+  "Software Solutions & ERP",
   "Cloud Computing",
   "Digital Marketing",
   "IT Consultation",
@@ -28,18 +28,20 @@ const NewsLetterModal: React.FC<NewsLetterModalProps> = ({
   setEmail,
   setIsNewsletterModalOpen,
 }) => {
+  const [loading, setLoading] = useState(false);
   const [selectedService, setSelectedService] = useState<string | undefined>(
     undefined
   );
   const [form] = Form.useForm();
 
   const onFinish = async (values: any) => {
+    setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/contact",
+        "https://api.codedrivenlabs.com/api/contact",
         values
       );
-      if (response.data.success) {
+      if (response?.statusText == "OK") {
         message.success(
           "Thank you for subscribing! We'll contact you shortly."
         );
@@ -52,6 +54,8 @@ const NewsLetterModal: React.FC<NewsLetterModalProps> = ({
     } catch (error) {
       console.error("Error submitting form:", error);
       message.error("Failed to submit the form. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -160,10 +164,12 @@ const NewsLetterModal: React.FC<NewsLetterModalProps> = ({
             <Button
               type="primary"
               htmlType="submit"
+              loading={loading} // Added loading state here
+              disabled={loading} // Prevent multiple submissions
               size="large"
               className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:shadow-lg hover:-translate-y-1 transition-all w-full text-base"
             >
-              Get Your Free Consultation Now
+              {loading ? "Submitting..." : "Get Your Free Consultation Now"}
             </Button>
           </Form.Item>
         </Form>
