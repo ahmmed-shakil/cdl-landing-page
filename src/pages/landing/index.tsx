@@ -58,17 +58,23 @@ const LandingPage: React.FC = () => {
         {/* <WhyUs /> */}
         <Review />
         <ContactUs />
+        <div className=" max-w-7xl mx-auto px-5 md:px-4 flex justify-start md:justify-end mb-10">
+          <p
+            onClick={() => {
+              navigate("/privacy-policy");
+            }}
+            className="text-blue-600 font-semibold flex items-center gap-1 cursor-pointer hover:text-indigo-600 text-sm transition-colors"
+          >
+            <ExternalLink />
+            <span>Privacy Policy</span>
+          </p>
+        </div>
       </div>
 
       {/* Sticky Footer */}
 
-      {/* <footer
-        className="fixed bottom-0 left-0 w-full bg-gray-100 text-white p-4 shadow-lg py-2"
-  
-      >
+      <footer className="fixed bottom-0 left-0 w-full bg-gray-100 text-white p-4 shadow-lg py-2">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-        
-
           <div className="flex items-center space-x-2">
             <img src={logo} alt="Logo" className="h-12 md:h-16 w-auto" />
           </div>
@@ -80,19 +86,18 @@ const LandingPage: React.FC = () => {
             Let’s Talk – Free Strategy Call
           </Button>
         </div>
-      </footer> */}
+      </footer>
 
-      <footer
+      {/* <footer
         className="fixed bottom-0 left-0 w-full bg-gray-100 text-white p-4 shadow-lg py-2"
-        // style={{ zIndex: 999999 }}
+   
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Logo */}
+       
           <div className="flex items-center space-x-2">
             <img src={logo} alt="Logo" className="h-12 md:h-16 w-auto" />
           </div>
 
-          {/* Footer Links */}
           <div className="flex flex-col gap-0  md:gap-4 md:flex-row items-center justify-center space-y-3 md:space-y-0 md:space-x-4">
             <p
               onClick={() => {
@@ -104,7 +109,6 @@ const LandingPage: React.FC = () => {
               <span>Privacy Policy</span>
             </p>
 
-            {/* Book a Demo Button */}
             <Button
               type="primary"
               size="large"
@@ -115,7 +119,7 @@ const LandingPage: React.FC = () => {
             </Button>
           </div>
         </div>
-      </footer>
+      </footer> */}
 
       {/* Book a Demo Modal */}
       <Modal
