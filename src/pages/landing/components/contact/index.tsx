@@ -193,18 +193,18 @@ const ContactUs = () => {
           </div>
 
           {/* <FaMapLocation size={50} className=" text-blue-700 mt-5" /> */}
-          <h4 className="mt-6 text-lg font-semibold">Visit Our Office</h4>
-          <p className="text-gray-600 mt-2 flex items-start gap-4">
+          <h4 className="mt-6 text-lg font-semibold">Visit Our Offce</h4>
+          <p className="text-gray-600 mt-2 flex items-start gap-1">
             <EnvironmentOutlined className="mt-1 text-blue-600" />
             <span>Unit No. 405-411, 4th Floor</span>
           </p>
-          <p className="text-gray-600 mt-2 flex items-start gap-4">
-            <EnvironmentOutlined className="mt-1 text-blue-600" />
-            <span>HITEX Business Square</span>
+          <p className="text-gray-600 mt-2 flex items-start gap-3">
+            {/* <EnvironmentOutlined className="mt-1 text-blue-600 hidden" /> */}
+            <span className=" ml-[20px]">HITEX Business Square</span>
           </p>
-          <p className="text-gray-600 mt-2 flex items-start gap-4 border-b border-slate-200 pb-6">
-            <EnvironmentOutlined className="mt-1 text-blue-600" />
-            <span> Hyderabad 500081.</span>
+          <p className="text-gray-600 mt-2 flex items-start gap-3 border-b border-slate-200 pb-6">
+            {/* <EnvironmentOutlined className="mt-1 text-blue-600" /> */}
+            <span className=" ml-[20px]"> Hyderabad 500081.</span>
           </p>
 
           {/* Social Icons */}
